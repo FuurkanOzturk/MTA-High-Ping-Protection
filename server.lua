@@ -9,15 +9,15 @@ local freezeTime = 30
 				 pingCount[player] = 1 
 			end 
 				if pingCount[player] == 5 then  
-    				outputChatBox("Pinginiz yüksek olduğundan "..freezeTime.." saniye boyunca görünmez oldunuz ve hareketiniz engellendi.", player, 255, 0, 0, true) --freeze notification
+    				outputChatBox("You're invisible and your movement is blocked for "..freezeTime.." seconds because your ping is high.", player, 255, 0, 0, true) --freeze notification
 					setElementAlpha(player, 200) -- The player becomes semi-invisible
 					toggleAllControls(player, false, false, false) -- Player controls are disabled
 					setElementFrozen(player, true)
 					setElementData(player, "highping", 1)
 				setTimer(function(player)
-					setElementAlpha(player, 255) -- adamı normal yap
+					setElementAlpha(player, 255) -- The player becomes visible.
 					setElementFrozen(player, false)
-					toggleAllControls(player, true, true, true) -- adamı serbest bırak
+					toggleAllControls(player, true, true, true) -- Given the controls
 					setElementData(player, "highping", 0)
 				end, freezeTime*1000, 1, player)							
 			end 
